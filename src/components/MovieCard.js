@@ -3,7 +3,8 @@ import './MovieCard.css';
 
 function MovieCard({movie}) {
 
-  const{title,vote_average,release_date,backdrop_path} = movie;
+//   easy way for prop destructuring
+  const{title,vote_average,release_date,backdrop_path,popularity,overview  } = movie;
 
   const imgBaseUrl = "https://image.tmdb.org/t/p/original";
 
@@ -21,13 +22,18 @@ function MovieCard({movie}) {
         </div>
 
         <div>
-            <span className='genere'>{vote_average}</span>
+            <span className='genere'>Rating : ⭐ {vote_average}</span>
         </div>
 
         <div className='rating'>
-            <span>{release_date}</span>
-            <span>{release_date}</span>
+            <span>Released : {release_date}</span>
+            {/* <span>Popularity : {popularity}</span> */}
         </div>
+
+        {/* <div>
+          <span>{overview}</span>
+          
+        </div> */}
         </div>
 
 

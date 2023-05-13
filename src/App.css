@@ -1,13 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap');
 /* Reset CSS */
+
+:root {
+  /* --bacg: #60a5fa;
+  --tile: #93c5fd; */
+
+  --bacg: #393E46;
+  --tile: #222831;
+
+}
 
 *{
   margin: 0;
   padding: 0%;
   box-sizing: border-box;
+  /* background-color: var(--bacg); */
 }
 
 .movies{
   display: flex;
   flex-wrap: wrap;
   gap: 1.5rem;
+  justify-content: center;
+  padding-top: 8rem;
+  background-color: var(--bacg);
+  padding-bottom: 1rem;
 }
+
+h1{
+  color: #2C74B3;
+  font-family: 'Yeseva One', cursive;
+  padding: 1rem;
+}
+
+.header{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  background-color: var(--tile);
+  padding-bottom: 1rem;
+}
+
+
+  .loading{
+    background-color: #222831;
+    height: 100vh;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    padding-top: 300px;
+  }
+
+
+
+
+

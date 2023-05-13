@@ -1,14 +1,16 @@
 .card-container{
     width: 18rem;
-    background-color: darkgray;
+    background-color: var(--tile);
     border-radius: 4px;
     box-shadow: 2px 2px 2px rgba(0,0,0,0.8);
-    margin-left: 4px;
+    /* margin-left: 4px; */
   }
   
   .image-container{
     width: 100%;
     height: 10rem;
+    background-color: var(--tile);
+
   }
   
   .movie-img{
@@ -16,22 +18,34 @@
     height: 100%;
     object-fit: cover;
     position: center center;
+    background-color: var(--tile);
   }
 
   .details{
-    margin-top: 10px;
+    /* margin-top: 10px; */
     display: flex;
     flex-direction: column;
     gap: 8px;
     padding: 8px;
     color: aliceblue;
+    background-color: var(--tile);
   }
 
   .title{
     font-size: 1.2rem;
+    color: #03C988;
   }
 
   .rating{
     display: flex;
     justify-content: space-between;
+    background-color: var(--tile);
+    color: #2C74B3;
+  }
+
+  .input-form{
+    width: 15rem;
+    height: 1.5rem;
+    border-radius: 5px;
+    padding: 10px;
   }
