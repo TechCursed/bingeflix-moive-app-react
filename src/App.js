@@ -9,10 +9,10 @@ import LoadingSpinnerComponent from 'react-spinners-components';
 function App() {
 
   const API_URL = "https://api.themoviedb.org/3/movie/now_playing?api_key=901abbe5020bba05ab7d38f0087a095c&language=en-US&page=1";
-  const API_TRENDING = "https://api.themoviedb.org/3/trending/all/day?api_key=901abbe5020bba05ab7d38f0087a095c";
-  const API_POPULAR = "https://api.themoviedb.org/3/movie/popular?api_key=901abbe5020bba05ab7d38f0087a095c&language=en-US&page=1";
-  const API_TOP_RATED = "https://api.themoviedb.org/3/movie/top_rated?api_key=901abbe5020bba05ab7d38f0087a095c&language=en-US&page=1";
-  let API_URL_Search = "https://api.themoviedb.org/3/search/movie?api_key=901abbe5020bba05ab7d38f0087a095c&query=";
+  // const API_TRENDING = "https://api.themoviedb.org/3/trending/all/day?api_key=901abbe5020bba05ab7d38f0087a095c";
+  // const API_POPULAR = "https://api.themoviedb.org/3/movie/popular?api_key=901abbe5020bba05ab7d38f0087a095c&language=en-US&page=1";
+  // const API_TOP_RATED = "https://api.themoviedb.org/3/movie/top_rated?api_key=901abbe5020bba05ab7d38f0087a095c&language=en-US&page=1";
+  // let API_URL_Search = "https://api.themoviedb.org/3/search/movie?api_key=901abbe5020bba05ab7d38f0087a095c&query=";
   
   const [movies, setmovies] = useState([]);
   const [isloading, setisloading] = useState("true");
