@@ -9,13 +9,18 @@ import LoadingSpinnerComponent from 'react-spinners-components';
 function App() {
 
   const API_URL = "https://api.themoviedb.org/3/movie/now_playing?api_key=901abbe5020bba05ab7d38f0087a095c&language=en-US&page=1";
+  let API_URL_Search = "https://api.themoviedb.org/3/search/movie?api_key=901abbe5020bba05ab7d38f0087a095c&query=";
+
   // const API_TRENDING = "https://api.themoviedb.org/3/trending/all/day?api_key=901abbe5020bba05ab7d38f0087a095c";
   // const API_POPULAR = "https://api.themoviedb.org/3/movie/popular?api_key=901abbe5020bba05ab7d38f0087a095c&language=en-US&page=1";
   // const API_TOP_RATED = "https://api.themoviedb.org/3/movie/top_rated?api_key=901abbe5020bba05ab7d38f0087a095c&language=en-US&page=1";
-  // let API_URL_Search = "https://api.themoviedb.org/3/search/movie?api_key=901abbe5020bba05ab7d38f0087a095c&query=";
   
+  //holds the data of movies for different API calls
   const [movies, setmovies] = useState([]);
+  // state of loading 
   const [isloading, setisloading] = useState("true");
+  //holds the search query 
+  const [query, setquery] = useState('');
 
   // FUNCTION TO FETCH THE DATA FROM THE API
   const getMovies = async () => {
@@ -41,23 +46,49 @@ function App() {
   }, [])
   
 
-
+  // for displaying the loading information until API results are fetched
   if(isloading==="true")
   {
     return(
       <div className='loading'>
-    <LoadingSpinnerComponent type={ 'Ripple' } colors={ [ '#06628d', '#03C988'] } size={ '150px' } />
+      <LoadingSpinnerComponent type={ 'Ripple' } colors={ [ '#06628d', '#03C988'] } size={ '150px' } />
       </div>
   )
+  }
+
+  //to handle the search functionality
+  const handleSearch = async (e) => {
+  
+    e.preventDefault();
+
+    // console.log(API_URL_Search+query);
+
+    try {
+    
+      //new API call with search query replacing the previous API call
+      const {data} = await axios.get(API_URL_Search+query);
+
+      //setting the movie state to searched results data
+      setmovies(data.results);
+      setisloading("false");      
+    } catch (error) {
+ 
+    }
   }
 
   return (
     <div className="App">
       <div className='header'>
       <h1>Binge Flix 📽️</h1>       
-      <form>
-        <input type='text' placeholder='Search by Movies/Actors/Director' className='input-form' ></input>
+      <div>
+
+      <form onSubmit={handleSearch}>  
+        <input type='text' placeholder='Search by Movies/Actors/Director' className='input-form' onChange={(e) => setquery(e.target.value)} ></input>
       </form>
+
+
+      </div>
+
 
       </div>
 
