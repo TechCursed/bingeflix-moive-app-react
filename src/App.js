@@ -9,12 +9,12 @@ import LoadingSpinnerComponent from 'react-spinners-components';
 function App() {
 
   const API_URL = "https://api.themoviedb.org/3/movie/now_playing?api_key=901abbe5020bba05ab7d38f0087a095c&language=en-US&page=1";
+  const API_TRENDING = "https://api.themoviedb.org/3/trending/all/day?api_key=901abbe5020bba05ab7d38f0087a095c";
+  const API_POPULAR = "https://api.themoviedb.org/3/movie/popular?api_key=901abbe5020bba05ab7d38f0087a095c&language=en-US&page=1";
+  const API_TOP_RATED = "https://api.themoviedb.org/3/movie/top_rated?api_key=901abbe5020bba05ab7d38f0087a095c&language=en-US&page=1";
   let API_URL_Search = "https://api.themoviedb.org/3/search/movie?api_key=901abbe5020bba05ab7d38f0087a095c&query=";
 
-  // const API_TRENDING = "https://api.themoviedb.org/3/trending/all/day?api_key=901abbe5020bba05ab7d38f0087a095c";
-  // const API_POPULAR = "https://api.themoviedb.org/3/movie/popular?api_key=901abbe5020bba05ab7d38f0087a095c&language=en-US&page=1";
-  // const API_TOP_RATED = "https://api.themoviedb.org/3/movie/top_rated?api_key=901abbe5020bba05ab7d38f0087a095c&language=en-US&page=1";
-  
+
   //holds the data of movies for different API calls
   const [movies, setmovies] = useState([]);
   // state of loading 
@@ -69,36 +69,86 @@ function App() {
       const {data} = await axios.get(API_URL_Search+query);
 
       //setting the movie state to searched results data
-      setmovies(data.results);
-      setisloading("false");      
+      setmovies(data.results);   
     } catch (error) {
  
     }
   }
 
+    //RETURNS THE TRENDING MOVIES
+    const getTrending = async () => {
+  
+      try {
+      
+        //new API call with TRENDING MOVIES
+        const {data} = await axios.get(API_TRENDING);
+  
+        //SETS THE MOVIES STATE TO TRENDING MOVIES
+        setmovies(data.results);
+      
+      } catch (error) {
+   
+      }
+    }
+
+        //RETURNS THE TOP RATED MOVIES
+        const getTopRated = async () => {
+  
+          try {
+            //new API call with TOP RATED MOVIES
+            const {data} = await axios.get(API_TOP_RATED);
+      
+            //SETS THE MOVIES STATE TO TOP RATED MOVIES
+            setmovies(data.results);
+          
+          } catch (error) {
+       
+          }
+        }
+
+        //RETURNS THE TOP POPULAR MOVIES
+        const getPopular = async () => {
+  
+          try {
+            //new API call with TOP POPULAR MOVIES
+            const {data} = await axios.get(API_POPULAR);
+      
+            //SETS THE MOVIES STATE TOP POPULAR MOVIES MOVIES
+            setmovies(data.results);
+          
+          } catch (error) {
+       
+          }
+        }
+
+
   return (
     <div className="App">
+
       <div className='header'>
-      <h1>Binge Flix 📽️</h1>       
-      <div>
+      <h1>📽️ Binge Flix 📽️</h1>  
 
       <form onSubmit={handleSearch}>  
         <input type='text' placeholder='Search by Movies/Actors/Director' className='input-form' onChange={(e) => setquery(e.target.value)} ></input>
-      </form>
+      </form>     
 
+     <div className='btn-grp'>
+        <button onClick={getTopRated} className='btn-all'>Top Rated</button>
+        <button onClick={getTrending} className='btn-all'>Trending</button>
+        <button onClick={getPopular} className='btn-all'>Popular</button>
+      </div>
 
       </div>
 
-
-      </div>
-
-      <div className='movies'>
+    <div className='movies'>
       {
+        
         movies && movies.length>0  && movies.map(movie => <MovieCard  key={movie.id} movie = {movie}/>)
       }
       </div>
-            
+
     </div>
+
   );
 }
 

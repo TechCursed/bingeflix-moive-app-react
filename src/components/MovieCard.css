@@ -33,7 +33,7 @@
 
   .title{
     font-size: 1.2rem;
-    color: #03C988;
+    color: var(--text-primary);
   }
 
   .rating{
@@ -41,11 +41,4 @@
     justify-content: space-between;
     background-color: var(--tile);
     color: #2C74B3;
-  }
-
-  .input-form{
-    width: 15rem;
-    height: 1.5rem;
-    border-radius: 5px;
-    padding: 10px;
   }

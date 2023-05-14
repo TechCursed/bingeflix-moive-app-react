@@ -2,19 +2,23 @@
 /* Reset CSS */
 
 :root {
-  /* --bacg: #60a5fa;
-  --tile: #93c5fd; */
-
   --bacg: #393E46;
   --tile: #222831;
-
+  --text-primary :#03C988;
+  --text-secondary :#2C74B3;
 }
 
 *{
   margin: 0;
   padding: 0%;
   box-sizing: border-box;
-  /* background-color: var(--bacg); */
+}
+
+.input-form{
+  width: 15rem;
+  height: 1.5rem;
+  border-radius: 5px;
+  padding: 10px;
 }
 
 .movies{
@@ -22,15 +26,16 @@
   flex-wrap: wrap;
   gap: 1.5rem;
   justify-content: center;
-  padding-top: 8rem;
+  padding-top: 12rem;
   background-color: var(--bacg);
   padding-bottom: 1rem;
 }
 
 h1{
-  color: #2C74B3;
+  color: var(--text-secondary);
   font-family: 'Yeseva One', cursive;
   padding: 1rem;
+  font-size: 2rem;
 }
 
 .header{
@@ -44,9 +49,8 @@ h1{
   padding-bottom: 1rem;
 }
 
-
   .loading{
-    background-color: #222831;
+    background-color: var(--tile);
     height: 100vh;
     justify-content: center;
     text-align: center;
@@ -54,7 +58,19 @@ h1{
     padding-top: 300px;
   }
 
+ .btn-grp{
+  display: flex ;
+  justify-content: space-evenly;
+  margin-top: 15px;
+}
 
-
-
-
+.btn-all{
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  margin-right: 20px;
+  border-radius: 5px;
+  background-color: var(--text-secondary);
+  color: #ffffff;
+}
